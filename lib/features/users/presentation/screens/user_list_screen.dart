@@ -62,9 +62,11 @@ class _UserListScreenState extends ConsumerState<UserListScreen> {
           ),
         ),
       ),
-      body: RefreshIndicator(
-        onRefresh: () => ref.read(usersListControllerProvider.notifier).refresh(),
-        child: _buildContent(filteredUsers, state),
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: () => ref.read(usersListControllerProvider.notifier).refresh(),
+          child: _buildContent(filteredUsers, state),
+        ),
       ),
     );
   }
